@@ -337,35 +337,6 @@ if __name__ == '__main__':
                             times.append(t_pitches[ind])
                             out_notes.append(sum(p[ind:ind+20])/20)
                             durs.append(dur)
-                    
-                    
-
-
-
-
-    # for i,pitch in enumerate(p):
-        
-    #     added=False
-    #     for ons in onsets:
-    #         if abs(t_pitches[i]-ons)<=0.01 and on_offs[i] == 1:
-    #             out_notes.append(pitch)
-    #             times.append(t_pitches[i])
-    #             added = True
-            
-    #     if(pitch!=cur_p):
-    #         if(on_offs[i] == 1 and not added):
-    #             out_notes.append(pitch)
-    #             times.append(t_pitches[i])
-    #         elif(i!=0):
-    #             if(on_offs[i-1] == 1 and not added):
-    #                 out_notes.append(pitch)
-    #                 times.append(t_pitches[i])
-    #         elif(i<len(p)-1):
-    #             if(on_offs[i+1] == 1 and not added):
-    #                 out_notes.append(pitch)
-    #                 times.append(t_pitches[i])
-    #         cur_p=pitch
-    #     prev_on_off = on_offs[i]
 
     midi_score = to_midi(out_notes, times, durs, args.midi_out)
 
