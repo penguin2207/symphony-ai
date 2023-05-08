@@ -278,7 +278,7 @@ if __name__ == '__main__':
 
     #pad = np.zeros(100)
     #data_filt_pad = np.append(pad, loudness_normalized_audio)
-    data_filt_pad = loudness_normalized_audio
+    data_filt_pad = data_filt
     
     # proc_fft(args.wav_in, args.wav_out)
     
@@ -318,15 +318,15 @@ if __name__ == '__main__':
     pad_size_pitches=int((len(t_pitches)-len(pitches)))
     pitches = np.pad(pitches, (0, pad_size_pitches), 'constant')
     #plt.plot(t_pitches, pitches, label = "pitches")
-    y_min =plt.axis()[2]
-    y_max =plt.axis()[3]
+    #y_min =plt.axis()[2]
+    #y_max =plt.axis()[3]
     onsets = get_onsets(args.wav_in)
     ons_arr = np.array(onsets)
     ons_div = ons_arr/float(fs)
     onsets = ons_div.tolist()
     #for stamp in onsets:
-        #stamp /= float(fs)
         #plt.plot([stamp, stamp], [y_min, y_max], '-r')
+        #stamp /= float(fs)
     #plt.legend()
     #plt.show()
 
@@ -346,22 +346,22 @@ if __name__ == '__main__':
     
 
     p = np.pad(p, (0, pad_size_pitches), 'constant')
-    plt.plot(t_pitches, p, label = "pitches_filt")
-    y_min =plt.axis()[2]
-    y_max =plt.axis()[3]
-    #for i, stamp in enumerate(onsets):
-        #if(i==0):
-            #plt.plot([stamp, stamp], [y_min, y_max], '-r', label = "note_onsets")
-        #else:
-            #plt.plot([stamp, stamp], [y_min, y_max], '-r')
-        #stamp /= float(fs)
+    #plt.plot(t_pitches, p, label = "pitches_filt")
+    # y_min =plt.axis()[2]
+    # y_max =plt.axis()[3]
+    # for i, stamp in enumerate(onsets):
+    #     if(i==0):
+    #         plt.plot([stamp, stamp], [y_min, y_max], '-r', label = "note_onsets")
+    #     else:
+    #         plt.plot([stamp, stamp], [y_min, y_max], '-r')
+    #     stamp /= float(fs)
         
-    #plt.plot(t_pitches, [i * y_max for i in on_offs], '-g', label = "note_on")
-    #plt.xlabel("Time (s)")
-    #plt.ylabel("Frequency (hz)")
-    #plt.title("Pitch Detection Output")
-    #plt.legend()
-    #plt.show()
+    # plt.plot(t_pitches, [i * y_max for i in on_offs], '-g', label = "note_on")
+    # plt.xlabel("Time (s)")
+    # plt.ylabel("Frequency (hz)")
+    # plt.title("Pitch Detection Output")
+    # plt.legend()
+    # plt.show()
 
     times = []
     out_notes = []
@@ -397,11 +397,11 @@ if __name__ == '__main__':
     midi_score = to_midi(out_notes, times, args.midi_out)
     later = datetime.datetime.now()
     difference = later - now
-    print("Now: ")
-    print(now.strftime("%Y-%m-%d %H:%M:%S"))
-    print("Later: ")
-    print(later.strftime("%Y-%m-%d %H:%M:%S"))
-    print("Time: %i" % difference.microseconds)
+    # print("Now: ")
+    # print(now.strftime("%Y-%m-%d %H:%M:%S"))
+    # print("Later: ")
+    # print(later.strftime("%Y-%m-%d %H:%M:%S"))
+    # print("Time: %i" % difference.microseconds)
     #print(args.wav_in)
 
     #plt.plot(data, label = "orig signal")
@@ -425,4 +425,3 @@ if __name__ == '__main__':
     # plt.xlabel('Time [sec]')
     # plt.show()
     # proc_fft(args.wav_in, args.wav_out)
-
